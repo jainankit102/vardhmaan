@@ -1,2 +1,2 @@
 # vardhmaan
-Vardhmaan Number finding
+Vardhmaan Numurology
