@@ -1,0 +1,32 @@
+.userinfo-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  background-color: #f7f7f7;
+  border: 1px solid #3f51b5;
+  border-radius: 1rem;
+
+  .user-name {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  mat-form-field {
+    margin: 0 24px;
+    width: 18rem;
+  }
+
+  .user-meta {
+    margin-top: 10px;
+  }
+
+  .action-button {
+    display: flex;
+    justify-content: flex-end;
+
+    .submit-button {
+      margin-left: 1rem;
+    }
+  }
+}

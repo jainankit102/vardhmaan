@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserInfo } from './user';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vardhmaan';
+  isFormSubmitted = false;
+  formSubmissionHandler(event: UserInfo) {
+    this.isFormSubmitted = true;
+  }
+
+  formResetHandler(event: UserInfo) {
+    this.isFormSubmitted = false;
+  }
 }

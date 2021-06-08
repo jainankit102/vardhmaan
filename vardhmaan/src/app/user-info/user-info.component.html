@@ -1,0 +1,41 @@
+<form [formGroup]="userInputForm" class="userinfo-form">
+    <h2>Please fill user info</h2>
+    <div class="user-name">
+        <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First Name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Middle Name</mat-label>
+            <input matInput formControlName="middleName" placeholder="Middle Name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last Name">
+        </mat-form-field>
+    </div>
+    <div class="user-meta">
+        <mat-form-field appearance="fill">
+            <mat-label>Date of birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" placeholder="Age">
+        </mat-form-field>
+        <mat-radio-group formControlName="gender" aria-label="Select an gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="action-button">
+        <button mat-stroked-button type="button" color="accent" (click)="resetUserInfo($event)">Reset</button>
+        <button mat-stroked-button color="primary" type="submit" class="submit-button"
+            (click)="submitUserInfo($event)">Primary</button>
+    </div>
+    <pre>{{userInputForm.value | json}}</pre>
+</form>
