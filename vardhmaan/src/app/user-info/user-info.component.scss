@@ -12,9 +12,13 @@
     flex: 1 1 auto;
   }
 
-  mat-form-field {
+  mat-form-field, mat-radio-group {
     margin: 0 24px;
     width: 18rem;
+  }
+
+  .female-button{
+      margin-left: 2rem;
   }
 
   .user-meta {

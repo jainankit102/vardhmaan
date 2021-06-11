@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Utils } from '../shared/utils';
 import { UserInfo } from '../user';
 import { UserInfoService } from '../user-info.service';
 
@@ -19,15 +20,15 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInputForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
+      firstName: new FormControl('Ankit', Validators.required),
       middleName: new FormControl(''),
-      lastName: new FormControl('', Validators.required),
+      lastName: new FormControl('Jain', Validators.required),
       dateOfBirth: new FormControl('', Validators.required),
-      age: new FormControl({ value: '', disable: true }),
-      gender: new FormControl('', Validators.required),
+      age: new FormControl(),
+      gender: new FormControl('male', Validators.required),
     });
     this.userInputForm.get('dateOfBirth')?.valueChanges.subscribe((value) => {
-      const calculatedAge = this.getAgeByDateObject(new Date(value));
+      const calculatedAge = Utils.calculateAge(new Date(value));
       this.userInputForm.patchValue({
         age: calculatedAge
       })

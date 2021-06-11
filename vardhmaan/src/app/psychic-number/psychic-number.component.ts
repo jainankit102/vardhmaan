@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Utils } from '../shared/utils';
+import { UserInfo } from '../user';
+
 import { UserInfoService } from '../user-info.service';
 
 @Component({
@@ -6,16 +10,28 @@ import { UserInfoService } from '../user-info.service';
   templateUrl: './psychic-number.component.html',
   styleUrls: ['./psychic-number.component.scss']
 })
-export class PsychicNumberComponent implements OnInit {
+export class PsychicNumberComponent implements OnInit, OnDestroy {
 
   constructor(private userInfoService: UserInfoService) { }
 
-  value: number | undefined;
+  private subscription = new Subscription();
+
+  psychicValue: number | undefined;
+  destinyNumber: number | undefined;
+  soulNumber: number | undefined;
 
   ngOnInit(): void {
-    const userInfo = this.userInfoService.getUserInfo();
-    const date: Date = new Date(userInfo.dateOfBirth);
-    this.value = date.getDate().toString().split('').map(Number).reduce((acc, curr) => acc + curr, 0);
+    this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
+      const dateObject: Date = new Date(userData.dateOfBirth);
+      const date = dateObject.getDate();
+      this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumOfDigits(date);
+      this.destinyNumber = Utils.getSumInSingleNumber(`${date}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`);
+    }));
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

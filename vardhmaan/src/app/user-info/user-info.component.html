@@ -25,16 +25,17 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Age</mat-label>
-            <input matInput formControlName="age" placeholder="Age">
+            <input matInput formControlName="age" placeholder="Age" readonly>
         </mat-form-field>
-        <mat-radio-group formControlName="gender" aria-label="Select an gender">
+        
+        <mat-radio-group class="mat-form-field" formControlName="gender" aria-label="Select an gender">
             <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button class="female-button" value="female">Female</mat-radio-button>
         </mat-radio-group>
     </div>
     <div class="action-button">
-        <button mat-stroked-button type="button" color="accent" (click)="resetUserInfo($event)">Reset</button>
-        <button mat-stroked-button color="primary" type="submit" class="submit-button"
+        <button mat-stroked-button type="button"  (click)="resetUserInfo($event)">Reset</button>
+        <button mat-raised-button color="primary" type="submit" class="submit-button"
             (click)="submitUserInfo($event)">Primary</button>
     </div>
     <pre>{{userInputForm.value | json}}</pre>

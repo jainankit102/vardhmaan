@@ -4,4 +4,5 @@ export interface UserInfo {
     lastName: string;
     dateOfBirth: string;
     gender: string;
+    age?: number;
 }

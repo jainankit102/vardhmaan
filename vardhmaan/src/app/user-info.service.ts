@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { UserInfo } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserInfoService {
 
-  userInfo: any;
+  userInfo: Subject<UserInfo> = new Subject<UserInfo>();
 
-  setUserInfo(value: any) {
-    this.userInfo = value;
+
+
+  setUserInfo(value: UserInfo) {
+    this.userInfo.next(value);
   }
 
   getUserInfo() {
-    return this.userInfo;
+    return this.userInfo.asObservable();
   }
 
   constructor() { }
