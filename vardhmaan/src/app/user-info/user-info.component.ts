@@ -52,8 +52,8 @@ export class UserInfoComponent implements OnInit {
 
   submitUserInfo(event: Event): void {
     if (!this.userInputForm.invalid) {
-      this.userInfoService.setUserInfo(this.userInputForm.value);
       this.submission.emit(this.userInputForm.value);
+      this.userInfoService.setUserInfo(this.userInputForm.value);
     } else {
       alert('Fill all the user info');
     }

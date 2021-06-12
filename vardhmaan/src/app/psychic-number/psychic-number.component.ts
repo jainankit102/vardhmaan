@@ -26,8 +26,17 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
       const date = dateObject.getDate();
       this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumOfDigits(date);
       this.destinyNumber = Utils.getSumInSingleNumber(`${date}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`);
+      this.soulNumber = this.getSoulNumber(userData);
     }));
 
+  }
+
+  getSoulNumber(userData: UserInfo) {
+    const firstNameVowel = Utils.getVowelChars(userData.firstName);
+    const lastNameVowel = Utils.getVowelChars(userData.lastName);
+    const firstNameVowelSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(firstNameVowel));
+    const lastNameVowelSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(lastNameVowel));
+    return Utils.getSumInSingleNumber(firstNameVowelSum + lastNameVowelSum);
   }
 
   ngOnDestroy() {

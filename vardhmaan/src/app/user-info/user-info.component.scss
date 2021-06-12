@@ -7,18 +7,14 @@
   border: 1px solid #3f51b5;
   border-radius: 1rem;
 
-  .user-name {
-    display: flex;
-    flex: 1 1 auto;
-  }
-
-  mat-form-field, mat-radio-group {
+  mat-form-field,
+  mat-radio-group {
     margin: 0 24px;
     width: 18rem;
   }
 
-  .female-button{
-      margin-left: 2rem;
+  .female-button {
+    margin-left: 2rem;
   }
 
   .user-meta {
@@ -28,6 +24,7 @@
   .action-button {
     display: flex;
     justify-content: flex-end;
+    margin-top: 2rem;
 
     .submit-button {
       margin-left: 1rem;
