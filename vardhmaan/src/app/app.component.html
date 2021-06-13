@@ -3,5 +3,5 @@
   <app-user-info (submission)="formSubmissionHandler($event)" (reset)="formResetHandler($event)"></app-user-info>
 </div>
 <!-- <div *ngIf="isFormSubmitted"> -->
-  <app-psychic-number></app-psychic-number>
+  <app-psychic-number [isReset]="isReset"></app-psychic-number>
 <!-- </div> -->

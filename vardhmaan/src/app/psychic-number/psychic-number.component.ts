@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LousGridData, numberLinkCorrospondingToAlphbate, Utils } from '../shared/utils';
-import { UserInfo } from '../user';
+import { getLousGridMetaData, numberLinkCorrospondingToAlphbate, Utils } from '../shared/utils';
+import { LousGridMeta, UserInfo } from '../user';
 
 import { UserInfoService } from '../user-info.service';
 
@@ -10,9 +10,12 @@ import { UserInfoService } from '../user-info.service';
   templateUrl: './psychic-number.component.html',
   styleUrls: ['./psychic-number.component.scss']
 })
-export class PsychicNumberComponent implements OnInit, OnDestroy {
+export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
+
+  @Input() isReset = false;
 
   constructor(private userInfoService: UserInfoService) { }
+
 
   private subscription = new Subscription();
 
@@ -27,10 +30,11 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
     intutional: 0
   }
 
-  lousGridData = LousGridData;
+  lousGridData: Array<LousGridMeta> = [...getLousGridMetaData()]
 
   ngOnInit(): void {
     this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
+      this.resetValues();
       const dateObject: Date = new Date(userData.dateOfBirth);
       const date = dateObject.getDate();
       this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumOfDigits(date);
@@ -43,8 +47,27 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
 
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.isReset = true) {
+      this.resetValues();
+    }
+  }
+
+  resetValues() {
+    this.psychicValue = undefined;
+    this.destinyNumber = undefined;
+    this.soulNumber = undefined;
+    this.kuaNumber = undefined;
+    this.planesOfNumber = {
+      physical: 0,
+      mental: 0,
+      emotional: 0,
+      intutional: 0
+    };
+    this.lousGridData = [...getLousGridMetaData()]
+  }
+
   calculateLousGridValue(userData: UserInfo) {
-    this.lousGridData = LousGridData;
     const dateObject: Date = new Date(userData.dateOfBirth);
     const fullDateAsString = `${dateObject.getDate()}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`;
     for (let i = 1; i < 10; i++) {
@@ -60,15 +83,16 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
 
   }
   updateLousGrid(placeholder: number | undefined, value: number, isSpecialValue = false) {
-    this.lousGridData.map(obj => {
+    this.lousGridData.forEach(obj => {
       if (obj.placeholder === placeholder) {
         if (isSpecialValue) {
+          obj.value = obj.value === 'X' ? '' : obj.value;
           obj.specialNumber = obj.specialNumber ? `${obj.specialNumber}${placeholder}` : placeholder;
         } else {
           obj.value = new Array(value).fill(placeholder).join('');
         }
       }
-    })
+    });
   }
 
   calculatePalensOfNumber(userData: UserInfo) {

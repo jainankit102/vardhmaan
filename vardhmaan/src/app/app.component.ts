@@ -9,11 +9,12 @@ import { UserInfo } from './user';
 export class AppComponent {
   title = 'vardhmaan';
   isFormSubmitted = false;
+  isReset = false;
   formSubmissionHandler(event: UserInfo) {
     this.isFormSubmitted = true;
   }
 
   formResetHandler(event: UserInfo) {
-    this.isFormSubmitted = false;
+    this.isReset = true;
   }
 }

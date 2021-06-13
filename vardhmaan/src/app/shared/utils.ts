@@ -51,73 +51,75 @@ export class Utils {
     }
 }
 
-export const LousGridData: Array<LousGridMeta> = [
-    {
-        value: 'T',
-        className: 'column-title-item '
-    },
-    {
-        value: 'W',
-        className: 'column-title-item '
-    },
-    {
-        value: 'A',
-        className: 'column-title-item '
-    },
-    {
-        value: '',
-        className: 'empty-item'
-    },
-    {
-        value: 'X',
-        placeholder: 4
-    },
-    {
-        value: 'X',
-        placeholder: 9
-    },
-    {
-        value: 'X',
-        placeholder: 2
-    },
-    {
-        value: 'M',
-        className: 'column-title-item '
-    },
-    {
-        value: 'X',
-        placeholder: 3
-    },
-    {
-        value: 'X',
-        placeholder: 5
-    },
-    {
-        value: 'X',
-        placeholder: 7
-    },
-    {
-        value: 'E',
-        className: 'column-title-item '
-    },
-    {
-        value: 'X',
-        placeholder: 8
-    },
-    {
-        value: 'X',
-        placeholder: 1
-    },
-    {
-        value: 'X',
-        placeholder: 6
-    },
-    {
-        value: 'P',
-        className: 'column-title-item '
+export function getLousGridMetaData(): Array<LousGridMeta> {
+    return [
+        {
+            value: 'T',
+            className: 'column-title-item '
+        },
+        {
+            value: 'W',
+            className: 'column-title-item '
+        },
+        {
+            value: 'A',
+            className: 'column-title-item '
+        },
+        {
+            value: '',
+            className: 'empty-item'
+        },
+        {
+            value: 'X',
+            placeholder: 4
+        },
+        {
+            value: 'X',
+            placeholder: 9
+        },
+        {
+            value: 'X',
+            placeholder: 2
+        },
+        {
+            value: 'M',
+            className: 'column-title-item '
+        },
+        {
+            value: 'X',
+            placeholder: 3
+        },
+        {
+            value: 'X',
+            placeholder: 5
+        },
+        {
+            value: 'X',
+            placeholder: 7
+        },
+        {
+            value: 'E',
+            className: 'column-title-item '
+        },
+        {
+            value: 'X',
+            placeholder: 8
+        },
+        {
+            value: 'X',
+            placeholder: 1
+        },
+        {
+            value: 'X',
+            placeholder: 6
+        },
+        {
+            value: 'P',
+            className: 'column-title-item '
 
-    }
-]
+        }
+    ]
+}
 export const AlphateWithNumer: any = {
     'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14,
     'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26

@@ -26,9 +26,9 @@
 <div>
     <dt>Lous Grid</dt>
     <div class="grid-container">
-        <div  *ngFor="let col of lousGridData" [ngClass]="col.className ? col.className : 'grid-item' ">
+        <div *ngFor="let col of lousGridData" [ngClass]="col.className ? col.className : 'grid-item' ">
+            <div class="lous-placeholder">{{col.placeholder}}</div>
             <span>{{col.value}}</span>
             <span style="color: red">{{col.specialNumber}}</span>
-
         </div>
     </div>
