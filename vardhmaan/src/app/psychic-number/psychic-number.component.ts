@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { numberLinkCorrospondingToAlphbate, Utils } from '../shared/utils';
+import { LousGridData, numberLinkCorrospondingToAlphbate, Utils } from '../shared/utils';
 import { UserInfo } from '../user';
 
 import { UserInfoService } from '../user-info.service';
@@ -27,6 +27,8 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
     intutional: 0
   }
 
+  lousGridData = LousGridData;
+
   ngOnInit(): void {
     this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
       const dateObject: Date = new Date(userData.dateOfBirth);
@@ -36,8 +38,37 @@ export class PsychicNumberComponent implements OnInit, OnDestroy {
       this.soulNumber = this.getSoulNumber(userData);
       this.kuaNumber = this.calculateKuaNumber(dateObject, userData.gender);
       this.calculatePalensOfNumber(userData);
+      this.calculateLousGridValue(userData);
     }));
 
+  }
+
+  calculateLousGridValue(userData: UserInfo) {
+    this.lousGridData = LousGridData;
+    const dateObject: Date = new Date(userData.dateOfBirth);
+    const fullDateAsString = `${dateObject.getDate()}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`;
+    for (let i = 1; i < 10; i++) {
+      const getNumOccrace = Utils.getNumberOccuranceChar(fullDateAsString, String(i));
+      if (getNumOccrace) {
+        this.updateLousGrid(i, getNumOccrace);
+      }
+    }
+
+    this.updateLousGrid(this.psychicValue, 1, true);
+    this.updateLousGrid(this.destinyNumber, 1, true);
+    this.updateLousGrid(this.kuaNumber, 1, true);
+
+  }
+  updateLousGrid(placeholder: number | undefined, value: number, isSpecialValue = false) {
+    this.lousGridData.map(obj => {
+      if (obj.placeholder === placeholder) {
+        if (isSpecialValue) {
+          obj.specialNumber = obj.specialNumber ? `${obj.specialNumber}${placeholder}` : placeholder;
+        } else {
+          obj.value = new Array(value).fill(placeholder).join('');
+        }
+      }
+    })
   }
 
   calculatePalensOfNumber(userData: UserInfo) {

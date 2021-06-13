@@ -22,3 +22,13 @@
     <dt>Planes of number</dt>
     <dd>{{planesOfNumber | json}}</dd>
 </div>
+
+<div>
+    <dt>Lous Grid</dt>
+    <div class="grid-container">
+        <div  *ngFor="let col of lousGridData" [ngClass]="col.className ? col.className : 'grid-item' ">
+            <span>{{col.value}}</span>
+            <span style="color: red">{{col.specialNumber}}</span>
+
+        </div>
+    </div>
