@@ -24,6 +24,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
   soulNumber: number | undefined;
   kuaNumber: number | undefined;
   planesOfNumber = {
+    numberConversion: '',
     physical: 0,
     mental: 0,
     emotional: 0,
@@ -37,7 +38,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
       this.resetValues();
       const dateObject: Date = new Date(userData.dateOfBirth);
       const date = dateObject.getDate();
-      this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumOfDigits(date);
+      this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumInSingleNumber(date, true);
       this.destinyNumber = Utils.getSumInSingleNumber(`${date}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`, true);
       this.soulNumber = this.getSoulNumber(userData);
       this.kuaNumber = this.calculateKuaNumber(dateObject, userData.gender);
@@ -59,6 +60,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
     this.soulNumber = undefined;
     this.kuaNumber = undefined;
     this.planesOfNumber = {
+      numberConversion: '',
       physical: 0,
       mental: 0,
       emotional: 0,
@@ -77,8 +79,8 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
       }
     }
 
-    this.updateLousGrid(this.psychicValue, 1, true);
-    this.updateLousGrid(this.destinyNumber, 1, true);
+    this.updateLousGrid(Utils.getSumInSingleNumber(this.psychicValue as number), 1, true);
+    this.updateLousGrid(Utils.getSumInSingleNumber(this.destinyNumber as number), 1, true);
     this.updateLousGrid(this.kuaNumber, 1, true);
 
   }
@@ -97,6 +99,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
 
   calculatePalensOfNumber(userData: UserInfo) {
     const numberOfDigit = userData.firstName.concat(userData.lastName).split('').map(char => numberLinkCorrospondingToAlphbate(char)).join('');
+    this.planesOfNumber.numberConversion = numberOfDigit;
     this.planesOfNumber.physical = Utils.getNumberOccuranceChar(numberOfDigit, '5') + Utils.getNumberOccuranceChar(numberOfDigit, '4');
     this.planesOfNumber.mental = Utils.getNumberOccuranceChar(numberOfDigit, '1') + Utils.getNumberOccuranceChar(numberOfDigit, '8');
     this.planesOfNumber.emotional = Utils.getNumberOccuranceChar(numberOfDigit, '2') + Utils.getNumberOccuranceChar(numberOfDigit, '3') + Utils.getNumberOccuranceChar(numberOfDigit, '6');
