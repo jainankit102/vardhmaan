@@ -1,2 +1,2 @@
 # vardhmaan
-Vardhmaan Numurology
+Vardhmaan Numurology calculatuion
