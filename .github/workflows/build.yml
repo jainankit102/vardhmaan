@@ -40,7 +40,6 @@ jobs:
           npm run build
       - name: Deploy build artifacts
         if: success()
-        uses: actions/upload-artifact@v1
-        with:
-           name: deploy_dist
-           path: ./../docs
+        run: |
+          pwd
+          cp -rf ./docs ./../docs
