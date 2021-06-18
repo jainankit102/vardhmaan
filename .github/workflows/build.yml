@@ -38,9 +38,9 @@ jobs:
           cd vardhmaan
           npm i
           npm run build
-      - name: Archive build
+      - name: Deploy build artifacts
         if: success()
         uses: actions/upload-artifact@v1
         with:
            name: deploy_dist
-           path: ./docs
+           path: ./../docs
