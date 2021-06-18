@@ -34,6 +34,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and npm run build
         run: |
+          pwd
+          cd vardhmaan
           npm i
           npm run build
       - name: Archive build
