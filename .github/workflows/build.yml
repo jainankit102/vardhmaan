@@ -42,4 +42,9 @@ jobs:
         if: success()
         run: |
           pwd
-          cp -rf ./docs ./../docs
+          cd ./../
+          x=$(pwd)
+          echo "The current working directory : $x"
+          rm -r docs
+          ls
+          cp -rf ./vardhmaan/docs .
