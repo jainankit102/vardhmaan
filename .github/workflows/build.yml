@@ -38,13 +38,9 @@ jobs:
           cd vardhmaan
           npm i
           npm run build
-      - name: Deploy build artifacts
+      - name: Archive build
         if: success()
-        run: |
-          pwd
-          cd ./../
-          x=$(pwd)
-          echo "The current working directory : $x"
-          rm -r docs
-          ls
-          cp -rf ./vardhmaan/docs .
+        uses: actions/upload-artifact@v1
+        with:
+           name: vardhmaan_build
+           path: ./docs
