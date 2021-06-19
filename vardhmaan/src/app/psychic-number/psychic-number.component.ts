@@ -21,6 +21,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
 
   psychicValue: number | undefined;
   destinyNumber: number | undefined;
+  destinyNumberByName: number | undefined;
   soulNumber: number | undefined;
   kuaNumber: number | undefined;
   planesOfNumber = {
@@ -30,6 +31,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
     emotional: 0,
     intutional: 0
   }
+  personalityNumber: number | undefined;
 
   lousGridData: Array<LousGridMeta> = [...getLousGridMetaData()]
 
@@ -42,10 +44,26 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
       this.destinyNumber = Utils.getSumInSingleNumber(`${date}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`, true);
       this.soulNumber = this.getSoulNumber(userData);
       this.kuaNumber = this.calculateKuaNumber(dateObject, userData.gender);
+      this.destinyNumberByName = this.calculateDestinyNumberByName(userData);
+      this.personalityNumber = this.calculatePersonalityNumber(userData);
       this.calculatePalensOfNumber(userData);
       this.calculateLousGridValue(userData);
     }));
 
+  }
+  calculatePersonalityNumber(userData: UserInfo): number | undefined {
+    const fullName = userData.firstName + userData.lastName;
+    const constantCharInName = fullName.split('').filter(char => !Utils.isVowel(char)).join('');
+    console.log(constantCharInName);
+    console.log(Utils.getCharNumberCount(constantCharInName));
+
+    return Utils.getSumInSingleNumber(Utils.getCharNumberCount(constantCharInName));
+
+  }
+  calculateDestinyNumberByName(userData: UserInfo): number | undefined {
+    const firstNameSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(userData.firstName));
+    const lastNanemSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(userData.lastName));
+    return Utils.getSumInSingleNumber(firstNameSum + lastNanemSum);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
