@@ -5,8 +5,10 @@
     "ng": "ng",
     "start": "ng serve --port 5000",
     "build": "ng build --prod --baseHref=https://jainankit102.github.io/vardhmaan/",
+    "build_local": "ng build --prod --baseHref=https://jainankit102.github.io/vardhmaan/ && npm run updateDocFolder",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "updateDocFolder": "rm -r ./../docs && cp -rf ./docs ./../docs"
   },
   "private": true,
   "dependencies": {

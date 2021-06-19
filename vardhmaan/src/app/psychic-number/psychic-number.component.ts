@@ -108,7 +108,7 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
 
   calculateKuaNumber(dateObject: Date, gender: string): number | undefined {
     const yearSum = Utils.getSumInSingleNumber(dateObject.getFullYear(), false);
-    return gender === 'male' ? 11 - yearSum : Utils.getSumInSingleNumber(yearSum + 4);
+    return gender === 'male' ? Utils.getSumInSingleNumber(11 - yearSum) : Utils.getSumInSingleNumber(yearSum + 4);
   }
 
   getSoulNumber(userData: UserInfo) {
