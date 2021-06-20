@@ -1,0 +1,6 @@
+<app-print-number-template [title]="title" [value]="kuaValue">
+    <ng-container *ngIf="kuaValue">
+        <div>{{fullYear}} = <span>{{yearSum}}</span></div>
+        <div>{{kuaExpression}} = {{kuaRawValue}}</div>
+    </ng-container>
+</app-print-number-template>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { UserInfo } from './user';
+import { AllNumberData, AllTypeOfNumbers, UserInfo } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,15 @@ import { UserInfo } from './user';
 export class UserInfoService {
 
   userInfo: Subject<UserInfo> = new Subject<UserInfo>();
+
+  private allNumberData: any = {
+    destinyByDate: 0,
+    destinyByName: 0,
+    kuaNumber: 0,
+    personalityNumber: 0,
+    psychicNumber: 0,
+    soulNumber: 0
+  }
 
 
 
@@ -17,6 +26,16 @@ export class UserInfoService {
 
   getUserInfo() {
     return this.userInfo.asObservable();
+  }
+
+  setNumberValueByName(numType: string, value: number) {
+    this.allNumberData[numType] = value;
+  }
+
+  getNumberValueByNumName(numType: string) {
+    if (this.allNumberData.hasOwnProperty(numType)) {
+      return this.allNumberData[numType];
+    }
   }
 
   constructor() { }

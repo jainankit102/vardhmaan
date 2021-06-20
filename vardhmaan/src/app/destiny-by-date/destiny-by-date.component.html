@@ -1,0 +1,5 @@
+<app-print-number-template [title]="title" [rawCalculcation]="destinyRawCalculation" [value]="destinyValue">
+    <ng-container *ngIf="destinyValue">
+        <span>{{destinyRawCalculation}} = {{destiyRawValue}}</span>
+    </ng-container>
+</app-print-number-template>

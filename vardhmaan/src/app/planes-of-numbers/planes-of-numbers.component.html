@@ -1,0 +1,10 @@
+<div class="num-container">
+    <h3>Planes of numbers:</h3>
+    <p>Full Namme : {{fullName}}</p>
+    <p>Number of conversion: {{fullNameNumber}}</p>
+    <div class="palensOfNumber">
+        <app-print-number-template *ngFor="let item of listOfPlanesOfNumber" [title]="item.title" [value]="item.value">
+            <div>{{item.expression}}</div>
+        </app-print-number-template>
+    </div>
+</div>

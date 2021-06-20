@@ -1,9 +1,11 @@
-<div>
-    <dt>Psychic Number</dt>
-    <dd>{{psychicValue}}</dd>
-</div>
+<app-print-number-template [title]="title" [rawCalculcation]="psychicRawCalculation" [value]="psychicValue">
+    <ng-container *ngIf="psychicValue">
+        {{psychicRawCalculation}} = {{psychicRawValue}}
 
-<div>
+    </ng-container>
+</app-print-number-template>
+
+<!-- <div>
     <dt>Destiny Number</dt>
     <dd>{{destinyNumber}}</dd>
 </div>
@@ -43,4 +45,4 @@
             <span>{{col.value}}</span>
             <span style="color: red">{{col.specialNumber}}</span>
         </div>
-    </div>
+    </div> -->

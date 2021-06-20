@@ -1,0 +1,7 @@
+<app-print-number-template [title]="title" [rawCalculcation]="destinyRawCalculation" [value]="destinyValue">
+    <ng-container *ngIf="destinyValue">
+        <div>{{fullName}}</div>
+        <div>{{numberCorrospondingToName}}</div>
+        <div>{{firstNameSum}} + {{lastNameSum}} = {{destinyRawValue}}</div>
+    </ng-container>
+</app-print-number-template>

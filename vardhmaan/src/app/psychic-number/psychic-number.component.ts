@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { getLousGridMetaData, numberLinkCorrospondingToAlphbate, Utils } from '../shared/utils';
-import { LousGridMeta, UserInfo } from '../user';
+import { AllTypeOfNumbers, LousGridMeta, PrintTemplateMeta, UserInfo } from '../user';
 
 import { UserInfoService } from '../user-info.service';
 
@@ -13,6 +13,8 @@ import { UserInfoService } from '../user-info.service';
 export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() isReset = false;
+  psychicRawCalculation: string | undefined;
+  psychicRawValue: number | undefined;
 
   constructor(private userInfoService: UserInfoService) { }
 
@@ -33,6 +35,8 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
   }
   personalityNumber: number | undefined;
 
+  title = 'Psychic Number';
+
   lousGridData: Array<LousGridMeta> = [...getLousGridMetaData()]
 
   ngOnInit(): void {
@@ -40,7 +44,12 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
       this.resetValues();
       const dateObject: Date = new Date(userData.dateOfBirth);
       const date = dateObject.getDate();
+      this.psychicRawCalculation = date.toString().split('').join(' + ');
+      this.psychicRawValue = eval(this.psychicRawCalculation);
       this.psychicValue = Utils.isSpecialNumber(date) ? date : Utils.getSumInSingleNumber(date, true);
+      this.userInfoService.setNumberValueByName(AllTypeOfNumbers.PSYCHIC, this.psychicValue);
+
+
       this.destinyNumber = Utils.getSumInSingleNumber(`${date}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`, true);
       this.soulNumber = this.getSoulNumber(userData);
       this.kuaNumber = this.calculateKuaNumber(dateObject, userData.gender);
@@ -55,14 +64,14 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
     const fullName = userData.firstName + userData.lastName;
     const constantCharInName = fullName.split('').filter(char => !Utils.isVowel(char)).join('');
     console.log(constantCharInName);
-    console.log(Utils.getCharNumberCount(constantCharInName));
+    console.log(Utils.getSumOfCharNumberCount(constantCharInName));
 
-    return Utils.getSumInSingleNumber(Utils.getCharNumberCount(constantCharInName));
+    return Utils.getSumInSingleNumber(Utils.getSumOfCharNumberCount(constantCharInName));
 
   }
   calculateDestinyNumberByName(userData: UserInfo): number | undefined {
-    const firstNameSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(userData.firstName));
-    const lastNanemSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(userData.lastName));
+    const firstNameSum = Utils.getSumInSingleNumber(Utils.getSumOfCharNumberCount(userData.firstName));
+    const lastNanemSum = Utils.getSumInSingleNumber(Utils.getSumOfCharNumberCount(userData.lastName));
     return Utils.getSumInSingleNumber(firstNameSum + lastNanemSum);
   }
 
@@ -132,8 +141,8 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
   getSoulNumber(userData: UserInfo) {
     const firstNameVowel = Utils.getVowelChars(userData.firstName);
     const lastNameVowel = Utils.getVowelChars(userData.lastName);
-    const firstNameVowelSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(firstNameVowel), true);
-    const lastNameVowelSum = Utils.getSumInSingleNumber(Utils.getCharNumberCount(lastNameVowel), true);
+    const firstNameVowelSum = Utils.getSumInSingleNumber(Utils.getSumOfCharNumberCount(firstNameVowel), true);
+    const lastNameVowelSum = Utils.getSumInSingleNumber(Utils.getSumOfCharNumberCount(lastNameVowel), true);
     return Utils.getSumInSingleNumber(firstNameVowelSum + lastNameVowelSum, true);
   }
 

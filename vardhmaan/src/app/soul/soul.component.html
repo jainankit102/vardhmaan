@@ -1,0 +1,7 @@
+<app-print-number-template [title]="title" [value]="soulValue">
+    <ng-container *ngIf="soulValue">
+        <div>{{firstNameVowels}} {{lastNameVowels}}</div>
+        <div>{{firstNameNumber}} {{lastNameNumber}}</div>
+        <div>{{firstNameVowelSum}} + {{lastNameVowelSum}} = {{soulValue}}</div>
+    </ng-container>
+</app-print-number-template>

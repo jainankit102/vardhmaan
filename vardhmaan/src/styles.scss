@@ -1,4 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: inherit;
+  padding: 0;
+}
+
+html {
+  font-size: 62%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 1.6rem;
+  color: $color-gray;
+  box-sizing: border-box;
+}
+
+
+// @import './icon-font.scss'

@@ -20,13 +20,30 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { PsychicNumberComponent } from './psychic-number/psychic-number.component';
+import { DestinyByDateComponent } from './destiny-by-date/destiny-by-date.component';
+import { SoulComponent } from './soul/soul.component';
+import { KuaComponent } from './kua/kua.component';
+import { LoShuGridComponent } from './lo-shu-grid/lo-shu-grid.component';
+import { PlanesOfNumbersComponent } from './planes-of-numbers/planes-of-numbers.component';
+import { DestinyByNameComponent } from './destiny-by-name/destiny-by-name.component';
+import { PersonalityNumberComponent } from './personality-number/personality-number.component';
+import { PrintNumberTemplateComponent } from './print-number-template/print-number-template.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserInfoComponent,
-    PsychicNumberComponent
+    PsychicNumberComponent,
+    DestinyByDateComponent,
+    SoulComponent,
+    KuaComponent,
+    LoShuGridComponent,
+    PlanesOfNumbersComponent,
+    DestinyByNameComponent,
+    PersonalityNumberComponent,
+    PrintNumberTemplateComponent
   ],
   imports: [
     BrowserModule,

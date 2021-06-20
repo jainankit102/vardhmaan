@@ -1,0 +1,7 @@
+<app-print-number-template [title]="title" [value]="personalityValue">
+    <ng-container *ngIf="personalityValue">
+        <div>{{firstNameConsonant}} {{lastNameConsonant}}</div>
+        <div>{{firstNameNumber}} {{lastNameNumber}}</div>
+        <div>{{firstNameConsonantSum}} + {{lastNameConsonantSum}} = {{ personalityRawValue}} </div>
+    </ng-container>
+</app-print-number-template>
