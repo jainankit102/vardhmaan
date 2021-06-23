@@ -2,6 +2,7 @@
 <!-- <app-print-number-template></app-print-number-template> -->
 <div class="app-body">
   <app-user-info (submission)="formSubmissionHandler($event)" (reset)="formResetHandler($event)"></app-user-info>
+
   <div class="num-cards">
     <app-psychic-number [isReset]="isReset"></app-psychic-number>
     <app-destiny-by-date></app-destiny-by-date>
@@ -10,8 +11,8 @@
     <app-soul></app-soul>
     <app-personality-number></app-personality-number>
   </div>
-  <app-planes-of-numbers></app-planes-of-numbers>
   <app-lo-shu-grid></app-lo-shu-grid>
+  <app-planes-of-numbers></app-planes-of-numbers>
 </div>
 <!-- <div *ngIf="isFormSubmitted"> -->
 <!-- </div> -->

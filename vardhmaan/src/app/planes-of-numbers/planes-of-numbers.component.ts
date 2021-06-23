@@ -24,6 +24,7 @@ export class PlanesOfNumbersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
+      this.resetValue();
       this.fullName = `${userData.firstName} ${userData.lastName}`;
       this.firstNameNumber = Utils.getNumbersCorrospondingToName(userData.firstName);
       this.lastNameNumber = Utils.getNumbersCorrospondingToName(userData.lastName);
@@ -43,6 +44,14 @@ export class PlanesOfNumbersComponent implements OnInit, OnDestroy {
     }));
   }
 
+  resetValue(): void {
+    this.listOfPlanesOfNumber = [];
+    this.firstNameNumber = '';
+    this.fullName = '';
+    this.lastNameNumber = '';
+    this.fullNameNumber = '';
+  }
+
   getNumMeta(title: string, arrayOfNumber: Array<number>): PlanesOfNumberMeta {
     let expression = '';
     let value = 0;
@@ -52,7 +61,7 @@ export class PlanesOfNumbersComponent implements OnInit, OnDestroy {
       expression += `${DigitInWord[occurance]} ${num}'s`;
       if (index !== arrayOfNumber.length - 1) {
         expression += ' + ';
-        
+
       }
     });
     return {

@@ -1,10 +1,19 @@
 <div class="num-container">
     <h3>{{title}}</h3>
-    <div class="grid-container">
-        <div *ngFor="let col of lousGridData" [ngClass]="col.className ? col.className : 'grid-item' ">
-            <div class="lous-placeholder">{{col.placeholder}}</div>
-            <span>{{col.value}}</span>
-            <span class="specialNumber">{{col.specialNumber}}</span>
+    <div class="lo-shu-container">
+        <div class="grid-container">
+            <div *ngFor="let col of lousGridData" [ngClass]="col.className ? col.className : 'grid-item' ">
+                <div class="lous-placeholder">{{col.placeholder}}</div>
+                <span>{{col.value}}</span>
+                <span class="specialNumber">{{col.specialNumber}}</span>
+            </div>
+        </div>
+        <div class="lo-shu-meta">
+            <label>Date of Birth: <span class="specialNumber">{{dateOfBirth}}</span></label>
+            <label>Psychic Number: <span class="specialNumber">{{psychicNumber}}</span></label>
+            <label>Destiny By Date number: <span class="specialNumber">{{destinytNumber}}</span></label>
+            <label>Kua Number: <span class="specialNumber">{{kuaNumber}}</span></label>
         </div>
     </div>
+
 </div>

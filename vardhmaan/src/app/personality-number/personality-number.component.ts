@@ -31,6 +31,8 @@ export class PersonalityNumberComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
 
+      this.resetValue();
+
       this.firstNameConsonant = userData.firstName.split('').filter(char => !Utils.isVowel(char)).join('');
       this.lastNameConsonant = userData.lastName.split('').filter(char => !Utils.isVowel(char)).join('');
 
@@ -45,6 +47,16 @@ export class PersonalityNumberComponent implements OnInit, OnDestroy {
       this.personalityValue = Utils.getSumInSingleNumber(this.personalityRawValue);
       this.userInfoService.setNumberValueByName(AllTypeOfNumbers.PERSONALITY, this.personalityValue);
     }));
+  }
+
+  resetValue() {
+    this.firstNameConsonant = '';
+    this.lastNameConsonant = '';
+    this.firstNameNumber = '';
+    this.lastNameNumber = '';
+    this.personalityRawValue = undefined;
+    this.personalityValue = undefined;
+    this.userInfoService.setNumberValueByName(AllTypeOfNumbers.PERSONALITY, 0);
   }
 
   calculatePersonalityNumber(userData: UserInfo): number | undefined {

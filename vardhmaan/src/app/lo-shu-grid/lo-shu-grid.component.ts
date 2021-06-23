@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { getLousGridMetaData, Utils } from '../shared/utils';
@@ -14,6 +15,11 @@ export class LoShuGridComponent implements OnInit, OnDestroy {
   title = 'LO SHU GRID';
 
   lousGridData: Array<LousGridMeta> = [...getLousGridMetaData()]
+
+  dateOfBirth = ''
+  psychicNumber = 0;
+  destinytNumber = 0;
+  kuaNumber = 0;
 
   private subscription = new Subscription();
 
@@ -32,6 +38,7 @@ export class LoShuGridComponent implements OnInit, OnDestroy {
 
   calculateLousGridValue(userData: UserInfo) {
     const dateObject: Date = new Date(userData.dateOfBirth);
+    this.dateOfBirth = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
     const fullDateAsString = `${dateObject.getDate()}${dateObject.getMonth() + 1}${dateObject.getFullYear()}`;
     for (let i = 1; i < 10; i++) {
       const getNumOccrace = Utils.getNumberOccuranceChar(fullDateAsString, String(i));
@@ -39,10 +46,12 @@ export class LoShuGridComponent implements OnInit, OnDestroy {
         this.updateLousGrid(i, getNumOccrace);
       }
     }
-
-    this.updateLousGrid(Utils.getSumInSingleNumber(this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.PSYCHIC)), 1, true);
-    this.updateLousGrid(Utils.getSumInSingleNumber(this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.DESTINY_BY_DOB)), 1, true);
-    this.updateLousGrid(this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.KUA), 1, true);
+    this.psychicNumber = Utils.getSumInSingleNumber(this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.PSYCHIC));
+    this.destinytNumber = Utils.getSumInSingleNumber(this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.DESTINY_BY_DOB));
+    this.kuaNumber = this.userInfoService.getNumberValueByNumName(AllTypeOfNumbers.KUA);
+    this.updateLousGrid(this.psychicNumber, 1, true);
+    this.updateLousGrid(this.destinytNumber, 1, true);
+    this.updateLousGrid(this.kuaNumber, 1, true);
 
   }
   updateLousGrid(placeholder: number | undefined, value: number, isSpecialValue = false) {
