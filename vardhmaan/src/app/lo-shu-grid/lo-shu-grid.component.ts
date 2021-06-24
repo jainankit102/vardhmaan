@@ -28,8 +28,18 @@ export class LoShuGridComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(this.userInfoService.getUserInfo().subscribe((userData: UserInfo) => {
+      this.resetValue();
       this.calculateLousGridValue(userData);
     }));
+  }
+
+  resetValue() {
+    this.lousGridData = [...getLousGridMetaData()];
+    this.dateOfBirth = '';
+    this.psychicNumber = 0;
+    this.destinytNumber = 0;
+    this.kuaNumber = 0;
+
   }
 
   ngOnDestroy(): void {

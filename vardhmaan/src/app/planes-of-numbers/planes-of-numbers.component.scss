@@ -1,9 +1,26 @@
-.palensOfNumber{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+@import './../../variables.scss';
+
+
+.palensOfNumber {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
-.num-container{
-    margin: 10px 20px;
+.num-container {
+  margin: 10px 20px;
+}
+
+.specialNumber {
+  color: $primary-color-light;
+}
+
+
+.plaes-meta-data {
+
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  justify-content: space-around;
+  margin: 5px 10px;
 }
