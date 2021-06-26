@@ -1,0 +1,15 @@
+<div class="num-container">
+    <h3>Challenge number</h3>
+    <div class="plaes-meta-data">
+        <label>Date : <span class="specialNumber">{{date}} / {{month}} / {{year}} </span></label>
+        <label>Date sum: <span class="specialNumber">{{dateSum}} + {{monthSum}} + {{yearSum}}</span></label>
+        <label>Life Path / Conductor / Destiny Number: <span class="specialNumber">{{lifePath}}</span></label>
+    </div>
+    <div class="palensOfNumber">
+        <app-print-number-template *ngFor="let item of listOfChallengeNumber" [title]="item.title" [value]="item.value">
+            <h4>Period: <span class="specialNumber"> {{item.period}}</span></h4>
+            <div>Value Calc: {{item.valueExpression}}</div>
+            <div>Period Calc: {{item.periodExpression}}</div>
+        </app-print-number-template>
+    </div>
+</div>

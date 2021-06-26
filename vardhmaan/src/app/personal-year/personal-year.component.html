@@ -1,0 +1,22 @@
+<app-print-number-template title="Personal Year number" [value]="personalYearNumber">
+    <ng-container *ngIf="personalYearNumber">
+        <div>{{date}} + {{month}} + {{todayYear}}</div>
+        <div>{{dateSum}} + {{monthSum}} + {{todayYearSum}}</div>
+        <div>{{personalYearExpression}}</div>
+    </ng-container>
+</app-print-number-template>
+
+<app-print-number-template title="Personal Month number" [value]="personalMonthNumber">
+    <ng-container *ngIf="personalMonthNumber">
+        <div>{{date}} + {{month}} + {{todayYear}}</div>
+        <div>{{dateSum}} + {{monthSum}} + {{todayYearSum}}</div>
+        <div>{{personalYearExpression}}</div>
+        <div>{{personalMonthExpression}}</div>
+    </ng-container>
+</app-print-number-template>
+
+<!-- <app-print-number-template [title]="title" [value]="destinyValue">
+    <ng-container *ngIf="destinyValue">
+        <span>{{destinyRawCalculation}} = {{destiyRawValue}}</span>
+    </ng-container>
+</app-print-number-template> -->

@@ -30,6 +30,8 @@ import { PersonalityNumberComponent } from './personality-number/personality-num
 import { PrintNumberTemplateComponent } from './print-number-template/print-number-template.component';
 import { UltimateRealityComponent } from './ultimate-reality/ultimate-reality.component';
 import { PinnaclesNumberComponent } from './pinnacles-number/pinnacles-number.component';
+import { ChallengeNumberComponent } from './challenge-number/challenge-number.component';
+import { PersonalYearComponent } from './personal-year/personal-year.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { PinnaclesNumberComponent } from './pinnacles-number/pinnacles-number.co
     PersonalityNumberComponent,
     PrintNumberTemplateComponent,
     UltimateRealityComponent,
-    PinnaclesNumberComponent
+    PinnaclesNumberComponent,
+    ChallengeNumberComponent,
+    PersonalYearComponent
   ],
   imports: [
     BrowserModule,

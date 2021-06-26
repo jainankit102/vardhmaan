@@ -64,7 +64,7 @@ export class PinnaclesNumberComponent implements OnInit, OnDestroy {
       value: this.firstPinnacleNumber,
       period: `0 to ${36 - (this.lifePath as number)} Years`,
       valueExpression: `${this.dateSum} + ${this.monthSum} = ${(this.dateSum as number) + (this.monthSum as number)}`,
-      periodExpression: `36 - ${this.lifePath}`
+      periodExpression: `36(const) - ${this.lifePath}(Life path)`
     }
     this.listOfPinnaclesNumber.push(firstPinnacleObj);
   }
@@ -104,7 +104,7 @@ export class PinnaclesNumberComponent implements OnInit, OnDestroy {
       title: `4'th Pinnacle number`,
       value: this.fourthPinnacleNumber,
       period: `${(this.thirdPinnaclePeriord as number) + 1} to Life time`,
-      valueExpression: `${this.dateSum} + ${this.yearSum} = ${(this.dateSum as number) + (this.yearSum as number)}`,
+      valueExpression: `${this.monthSum} + ${this.yearSum} = ${(this.monthSum as number) + (this.yearSum as number)}`,
       periodExpression: `${this.thirdPinnaclePeriord} - To rest of the life`
     }
 
