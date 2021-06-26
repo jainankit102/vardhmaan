@@ -1,0 +1,6 @@
+<app-print-number-template [title]="title" [value]="ultimateNumber">
+    <ng-container *ngIf="ultimateNumber">
+        <div>DBN + DBDOB</div>
+        <span>{{destinyByDate}} + {{destinyByName}} = {{ultimateRawNumber}}</span>
+    </ng-container>
+</app-print-number-template>

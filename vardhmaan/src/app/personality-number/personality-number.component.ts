@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Utils } from '../shared/utils';
-import { AllTypeOfNumbers, PrintTemplateMeta, UserInfo } from '../user';
+import { AllTypeOfNumbers, UserInfo } from '../user';
 import { UserInfoService } from '../user-info.service';
 
 

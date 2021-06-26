@@ -28,6 +28,8 @@ import { PlanesOfNumbersComponent } from './planes-of-numbers/planes-of-numbers.
 import { DestinyByNameComponent } from './destiny-by-name/destiny-by-name.component';
 import { PersonalityNumberComponent } from './personality-number/personality-number.component';
 import { PrintNumberTemplateComponent } from './print-number-template/print-number-template.component';
+import { UltimateRealityComponent } from './ultimate-reality/ultimate-reality.component';
+import { PinnaclesNumberComponent } from './pinnacles-number/pinnacles-number.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { PrintNumberTemplateComponent } from './print-number-template/print-numb
     PlanesOfNumbersComponent,
     DestinyByNameComponent,
     PersonalityNumberComponent,
-    PrintNumberTemplateComponent
+    PrintNumberTemplateComponent,
+    UltimateRealityComponent,
+    PinnaclesNumberComponent
   ],
   imports: [
     BrowserModule,

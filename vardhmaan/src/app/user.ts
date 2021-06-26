@@ -45,3 +45,11 @@ export interface PlanesOfNumberMeta {
     value: string | number;
     expression: string;
 }
+
+export interface PinnacleNumberMeta {
+    title: string;
+    value: number;
+    period: string;
+    valueExpression?: string;
+    periodExpression?: string;
+}
