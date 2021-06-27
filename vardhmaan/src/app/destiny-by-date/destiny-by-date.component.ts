@@ -33,6 +33,14 @@ export class DestinyByDateComponent implements OnInit, OnDestroy {
       this.userInfoService.setNumberValueByName(AllTypeOfNumbers.DESTINY_BY_DOB, this.destinyValue);
 
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
+  }
+  resetValue() {
+    this.destinyRawCalculation = undefined;
+    this.destinyValue = undefined;
+    this.destiyRawValue = undefined;
   }
 
   ngOnDestroy(): void {

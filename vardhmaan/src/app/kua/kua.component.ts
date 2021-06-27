@@ -40,6 +40,12 @@ export class KuaComponent implements OnInit, OnDestroy {
       this.userInfoService.setNumberValueByName(AllTypeOfNumbers.KUA, this.kuaValue);
 
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
+  }
+  resetValue() {
+    this.kuaValue = undefined;
   }
 
   ngOnDestroy(): void {

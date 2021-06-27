@@ -42,8 +42,8 @@ export class UserInfoComponent implements OnInit {
     if (this.userInputForm.dirty) {
       const isSafe = confirm(`Unsaved changes will be lost! would your like to proceed?`)
       if (isSafe) {
-
-        this.reset.emit(this.userInputForm.value)
+        this.reset.emit(this.userInputForm.value);
+        this.userInfoService.resetData.next();
         this.userInputForm.reset();
       }
 

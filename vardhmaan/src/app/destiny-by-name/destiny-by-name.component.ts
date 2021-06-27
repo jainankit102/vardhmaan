@@ -34,10 +34,18 @@ export class DestinyByNameComponent implements OnInit, OnDestroy {
       this.firstNameSum = Utils.getSumOfCharNumberCount(userData.firstName);
       this.lastNameSum = Utils.getSumOfCharNumberCount(userData.lastName);
       this.destinyRawValue = this.firstNameSum + this.lastNameSum;
-      this.destinyValue = Utils.getSumInSingleNumber(this.destinyRawValue);
+      this.destinyValue = Utils.getSumInSingleNumber(this.destinyRawValue, true);
       this.userInfoService.setNumberValueByName(AllTypeOfNumbers.DESTINY_BY_NAME, this.destinyValue);
 
     }));
+
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
+  }
+  resetValue() {
+    this.destinyValue = undefined;
+
   }
 
   ngOnDestroy(): void {

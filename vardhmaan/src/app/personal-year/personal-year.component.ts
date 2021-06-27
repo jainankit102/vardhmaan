@@ -50,6 +50,13 @@ export class PersonalYearComponent implements OnInit, OnDestroy {
       this.personalMonthNumber = Utils.getSumInSingleNumber(this.personalYearNumber + this.todayMonthValue);
       this.personalMonthExpression = `${this.personalYearNumber} + ${this.todayMonthValue} = ${this.personalYearNumber + this.todayMonthValue}`;
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }))
+  }
+  resetValue() {
+    this.personalMonthNumber = undefined;
+    this.personalYearNumber = undefined;
   }
 
   updateDateProperties(dateObj: Date) {

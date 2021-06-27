@@ -1,0 +1,13 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin: auto;
+  height: calc(100vh - 150px);
+}
+
+.submit-button {
+  display: block;
+}

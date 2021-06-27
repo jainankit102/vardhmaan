@@ -47,6 +47,9 @@ export class PersonalityNumberComponent implements OnInit, OnDestroy {
       this.personalityValue = Utils.getSumInSingleNumber(this.personalityRawValue);
       this.userInfoService.setNumberValueByName(AllTypeOfNumbers.PERSONALITY, this.personalityValue);
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }))
   }
 
   resetValue() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AllNumberData, AllTypeOfNumbers, UserInfo } from './user';
+import { UserInfo } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { AllNumberData, AllTypeOfNumbers, UserInfo } from './user';
 export class UserInfoService {
 
   userInfo: Subject<UserInfo> = new Subject<UserInfo>();
+  resetData: Subject<UserInfo> = new Subject<UserInfo>();
 
   private allNumberData: any = {
     destinyByDate: 0,
@@ -17,8 +18,6 @@ export class UserInfoService {
     psychicNumber: 0,
     soulNumber: 0
   }
-
-
 
   setUserInfo(value: UserInfo) {
     this.userInfo.next(value);
@@ -37,6 +36,8 @@ export class UserInfoService {
       return this.allNumberData[numType];
     }
   }
+
+
 
   constructor() { }
 }

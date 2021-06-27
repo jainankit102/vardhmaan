@@ -54,6 +54,10 @@ export class ChallengeNumberComponent implements OnInit, OnDestroy {
 
 
     }));
+
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }))
   }
 
   calculateFirstChallenge() {
@@ -126,6 +130,13 @@ export class ChallengeNumberComponent implements OnInit, OnDestroy {
 
   resetValue(): void {
     this.listOfChallengeNumber = [];
+    this.lifePath = undefined;
+    this.date = undefined;
+    this.dateSum = undefined;
+    this.month = undefined;
+    this.monthSum = undefined;
+    this.year = undefined;
+    this.yearSum = undefined;
     // this.firstNameNumber = '';
     // this.fullName = '';
     // this.lastNameNumber = '';

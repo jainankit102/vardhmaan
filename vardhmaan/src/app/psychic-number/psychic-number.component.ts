@@ -59,6 +59,10 @@ export class PsychicNumberComponent implements OnInit, OnDestroy, OnChanges {
       this.calculateLousGridValue(userData);
     }));
 
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValues();
+    }))
+
   }
   calculatePersonalityNumber(userData: UserInfo): number | undefined {
     const fullName = userData.firstName + userData.lastName;

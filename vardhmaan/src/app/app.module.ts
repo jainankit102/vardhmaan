@@ -32,6 +32,8 @@ import { UltimateRealityComponent } from './ultimate-reality/ultimate-reality.co
 import { PinnaclesNumberComponent } from './pinnacles-number/pinnacles-number.component';
 import { ChallengeNumberComponent } from './challenge-number/challenge-number.component';
 import { PersonalYearComponent } from './personal-year/personal-year.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { PersonalYearComponent } from './personal-year/personal-year.component';
     UltimateRealityComponent,
     PinnaclesNumberComponent,
     ChallengeNumberComponent,
-    PersonalYearComponent
+    PersonalYearComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

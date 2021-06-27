@@ -40,6 +40,12 @@ export class SoulComponent implements OnInit, OnDestroy {
 
 
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
+  }
+  resetValue() {
+    this.soulValue = undefined;
   }
 
   ngOnDestroy(): void {

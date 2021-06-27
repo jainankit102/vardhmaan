@@ -1,22 +1,12 @@
 <app-header></app-header>
+<router-outlet></router-outlet>
 <!-- <app-print-number-template></app-print-number-template> -->
 <div class="app-body">
-  <app-user-info (submission)="formSubmissionHandler($event)" (reset)="formResetHandler($event)"></app-user-info>
 
-  <div class="num-cards">
-    <app-psychic-number [isReset]="isReset"></app-psychic-number>
-    <app-destiny-by-date></app-destiny-by-date>
-    <app-destiny-by-name></app-destiny-by-name>
-    <app-kua></app-kua>
-    <app-soul></app-soul>
-    <app-personality-number></app-personality-number>
-    <app-ultimate-reality></app-ultimate-reality>
-    <app-personal-year></app-personal-year>
-  </div>
-  <app-lo-shu-grid></app-lo-shu-grid>
-  <app-planes-of-numbers></app-planes-of-numbers>
-  <app-pinnacles-number></app-pinnacles-number>
-  <app-challenge-number></app-challenge-number>
+  <router-outlet></router-outlet>
 </div>
+<footer class="app-footer">
+  @Copyright by Ankit Jain
+</footer>
 <!-- <div *ngIf="isFormSubmitted"> -->
 <!-- </div> -->

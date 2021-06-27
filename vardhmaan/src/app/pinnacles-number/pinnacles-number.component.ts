@@ -54,6 +54,10 @@ export class PinnaclesNumberComponent implements OnInit, OnDestroy {
 
 
     }));
+
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
   }
 
   calculateFirstPinnacle() {
@@ -126,10 +130,13 @@ export class PinnaclesNumberComponent implements OnInit, OnDestroy {
 
   resetValue(): void {
     this.listOfPinnaclesNumber = [];
-    // this.firstNameNumber = '';
-    // this.fullName = '';
-    // this.lastNameNumber = '';
-    // this.fullNameNumber = '';
+    this.lifePath = undefined;
+    this.date = undefined;
+    this.dateSum = undefined;
+    this.month = undefined;
+    this.monthSum = undefined;
+    this.year = undefined;
+    this.yearSum = undefined;
   }
 
 

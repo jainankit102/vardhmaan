@@ -42,6 +42,9 @@ export class PlanesOfNumbersComponent implements OnInit, OnDestroy {
       // this.planesOfNumber.intutional = Utils.getNumberOccuranceChar(numberOfDigit, '7') + Utils.getNumberOccuranceChar(numberOfDigit, '9');
 
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }));
   }
 
   resetValue(): void {

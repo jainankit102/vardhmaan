@@ -31,7 +31,15 @@ export class UltimateRealityComponent implements OnInit, OnDestroy {
       this.ultimateNumber = Utils.getSumInSingleNumber(this.ultimateRawNumber)
     }));
 
-
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }))
+  }
+  resetValue() {
+    this.ultimateNumber = undefined;
+    this.destinyByDate = undefined;
+    this.ultimateRawNumber = undefined;
+    this.destinyByName = undefined;
   }
 
   ngOnDestroy(): void {

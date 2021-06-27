@@ -31,6 +31,9 @@ export class LoShuGridComponent implements OnInit, OnDestroy {
       this.resetValue();
       this.calculateLousGridValue(userData);
     }));
+    this.subscription.add(this.userInfoService.resetData.subscribe(data => {
+      this.resetValue();
+    }))
   }
 
   resetValue() {

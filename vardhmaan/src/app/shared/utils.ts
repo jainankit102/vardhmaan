@@ -53,6 +53,15 @@ export class Utils {
     static getNumberOccuranceChar(word: string, char: string): number {
         return word.split('').filter(c => c === char).length;
     }
+
+    static validateToken(tokenArray: Array<string>): boolean {
+        if (tokenArray && tokenArray.length > 6) {
+            const val = `${tokenArray[2]}${tokenArray[3]}`;
+            const obj = new Date();
+            return Math.abs(+val - 4) === obj.getDate();
+        }
+        return false;
+    }
 }
 
 export function getLousGridMetaData(): Array<LousGridMeta> {
