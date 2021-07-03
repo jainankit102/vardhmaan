@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Utils } from '../shared/utils';
 import { UserInfo } from '../user';
 import { UserInfoService } from '../user-info.service';
+import { DateAdapter } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-user-info',
@@ -16,7 +18,9 @@ export class UserInfoComponent implements OnInit {
   @Output() submission = new EventEmitter<UserInfo>();
   @Output() reset = new EventEmitter<UserInfo>();
 
-  constructor(private userInfoService: UserInfoService) { }
+  constructor(private userInfoService: UserInfoService, private dateAdapter: DateAdapter<Date>) {
+    this.dateAdapter.setLocale('en-IN');
+  }
 
   ngOnInit(): void {
     this.userInputForm = new FormGroup({
