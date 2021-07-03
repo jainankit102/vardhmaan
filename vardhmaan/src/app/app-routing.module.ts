@@ -6,9 +6,9 @@ import { TokenValidatorGuard } from './token-validator.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [TokenValidatorGuard] },
-  { path: '**', component: LoginComponent },
-  { path: '*', component: LoginComponent }
+  { path: 'home', component: HomeComponent },
+  { path: '**', component: HomeComponent },
+  { path: '*', component: HomeComponent }
 ];
 
 @NgModule({
